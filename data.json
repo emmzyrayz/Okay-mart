@@ -1,0 +1,122 @@
+{
+  "0": [
+    {
+      "id": "0",
+      "premium": false,
+      "title": "Mr",
+      "firstname": "Martins",
+      "lastname": "Joseph",
+      "age": 19,
+      "image": "assets/images/product-images/product-image1.jpg",
+      "location": "lagos, nigeria",
+      "sex": "Male",
+      "businessname": "beauty enterprice",
+      "bio": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere animi et ratione!",
+      "contact": [
+        {
+          "facebook": "www.facebook.com",
+          "twitter": "www.twitter.com",
+          "instagram": "www.instagram.com",
+          "whatsapp": "wa.me/081********",
+          "phone": "081********",
+          "website": "www.website.com"
+        }
+      ],
+      "product": {
+        "0": [
+          {
+            "id": "0",
+            "premium": true,
+            "featured": true,
+            "trending": true,
+            "page" : "/product-page.html",
+            "category": "fashion",
+            "tag": "clothings",
+            "class": "top",
+            "brand": "fendi",
+            "name": "turtle neck t-shirt",
+            "color": "white",
+            "size": "large(L)",
+            "oldPrice": 100,
+            "newPrice": 300,
+            "currency": "$",
+            "buyLink" : "https://wa.me/+2348103064692",
+            "productLink" : "/product-page.html",
+            "discount": 60,
+            "image": "assets/images/product-images/product-image1.jpg",
+            "banner": "assets/images/product-images/product-image1.jpg",
+            "sumDescription": "A plain white t-shirt with a large F at the front and fendi at the back neck collar",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt voluptatum officia ut ab ad reprehenderit! Qui quis, ipsa repellendus omnis debitis nisi sunt explicabo quaerat praesentium aut, dignissimos officia distinctio!",
+            "thumbnails": [
+              "assets/images/product-images/product-image2.jpg",
+              "assets/images/product-images/product-image1.jpg",
+              "assets/images/product-images/product-image3.jpg"
+            ]
+          }
+        ],
+        "1": [
+          {
+            "id": "1",
+            "premium": false,
+            "featured": true,
+            "trending": true,
+            "page" : "/product-page.html",
+            "category": "fashion",
+            "tag": "clothings",
+            "class": "top",
+            "brand": "fendi",
+            "name": "turtle neck t-shirt",
+            "color": "white",
+            "size": "large(L)",
+            "oldPrice": 100,
+            "newPrice": 300,
+            "currency": "$",
+            "buyLink" : "https://wa.me/+2348103064692",
+            "productLink" : "/product-page.html",
+            "discount": 60,
+            "image": "assets/images/product-images/product-image1.jpg",
+            "banner": "assets/images/product-images/product-image1.jpg",
+            "sumDescription": "A plain white t-shirt with a large F at the front and fendi at the back neck collar",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt voluptatum officia ut ab ad reprehenderit! Qui quis, ipsa repellendus omnis debitis nisi sunt explicabo quaerat praesentium aut, dignissimos officia distinctio!",
+            "thumbnails": [
+              "assets/images/product-images/product-image2.jpg",
+              "assets/images/product-images/product-image1.jpg",
+              "assets/images/product-images/product-image3.jpg"
+            ]
+          }
+        ],
+        "2": [
+          {
+            "id": "2",
+            "premium": true,
+            "featured": true,
+            "trending": true,
+            "page" : "/product-page.html",
+            "category": "fashion",
+            "tag": "clothings",
+            "class": "top",
+            "brand": "fendi",
+            "name": "turtle neck t-shirt",
+            "color": "white",
+            "size": "large(L)",
+            "oldPrice": 100,
+            "newPrice": 300,
+            "currency": "$",
+            "buyLink" : "https://wa.me/+2348103064692",
+            "productLink" : "/product-page.html",
+            "discount": 60,
+            "image": "assets/images/product-images/product-image1.jpg",
+            "banner": "assets/images/product-images/product-image1.jpg",
+            "sumDescription": "A plain white t-shirt with a large F at the front and fendi at the back neck collar",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt voluptatum officia ut ab ad reprehenderit! Qui quis, ipsa repellendus omnis debitis nisi sunt explicabo quaerat praesentium aut, dignissimos officia distinctio!",
+            "thumbnails": [
+              "assets/images/product-images/product-image1.jpg",
+              "assets/images/product-images/product-image1.jpg",
+              "assets/images/product-images/product-image1.jpg"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

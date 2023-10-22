@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OKAY-MART</title>
+    <meta name="description" content="Shop with the perfect gift for you" />
+    <meta property="og:title" content="Okay-Mart" />
+    <meta property="og:description" content="Description of your website" />
+    <meta property="og:image" content="https://okaymart-8c627.web.app/assets/images/logo-icon.png" />
+    <meta property="og:url" content="https://okaymart-8c627.web.app/" />
+    <link rel="shortcut icon" href="assets/images/logo-icon.png" />
+    <link rel="stylesheet" href="/assets/owl-carousel/owl.carousel.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,800;0,900;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/shop.css" />
+
+    <!-- script -->
+    <script
+      src="https://kit.fontawesome.com/76d827917f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/vendor/jquery-3.7.0.min.js"></script>
+    <script src="/assets/owl-carousel/owl.carousel.min.js"></script>
+    <script src="/temp.js"></script>
+  </head>
+  <body>
+    <!-- loader -->
+    <div id="pre-loader">
+      <img loading="lazy" src="assets/images/loader.gif" alt="Loading..." />
+    </div>
+    <!-- loader -->
+
+    <!-- menu for small screen -->
+    <div class="menu-con " id="menu-con">
+      <i onclick="closeMenuBtn()" class="fa-solid fa-circle-xmark"></i>
+    <div class="menu-drop">
+      <div class="menu-search">
+        <input
+          type="search"
+          name="Search ..."
+          id="search"
+          placeholder="Search ..."
+          class="search"
+        />
+        <button class="search-btn"><i class="fa-solid fa-search"></i></button>
+      </div>
+
+      <div class="menu-link">
+        <ul class="links">
+          <a href="/">
+            <li class="link">Home</li>
+          </a>
+            <li onclick="catMenuBtn()" class="link sub-link" id="sub-link">Categories &nbsp; <i class="fa-solid fa-chevron-down"></i></li>
+            <ul class="links sub-links" id="sub-links">
+              <a href="#"><li class="link">Another thing</li></a>
+              <a href="#"><li class="link">Another thing</li></a>
+              <a href="#"><li class="link">Another thing</li></a>
+              <a href="#"><li class="link">Another thing</li></a>
+            </ul>
+          <a href="#">
+            <li class="link">Featured</li>
+          </a>
+        </ul>
+      </div>
+
+      <div class="menu-btn">
+        <button class="sign-in">
+          Log In &nbsp;<i class="fa-solid fa-sign-in"></i>
+        </button>
+        <button class="sign-up">
+          Sign Up &nbsp;<i class="fa-solid fa-sign-in"></i>
+        </button>
+        <button class="log-out">
+          Log Out &nbsp;<i class="fa-solid fa-sign-out"></i>
+        </button>
+      </div>
+
+      <div class="menu-social">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+
+      <div class="logo" id="logo">
+        <div class="logo-img">
+          <img loading="lazy" src="/assets/images/logo-icon.png" alt="OKAY-MART" />
+        </div>
+        <div class="logo-title" id="logo-title">
+          <span>OKAY-MART</span>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- !menu for small screen -->
+
+    <!-- #HEADER -->
+    <header>
+      <!-- #news nav -->
+      <div class="note-bar" id="top">
+        <div class="note-bar-content">
+          <div class="scrolling-text">
+            <p>price for fendi just dropped by 30% 🛍</p>
+            <p>Buy from us today because today is discount day 🎉</p>
+            <p>Hurray! Welcome to free 50% discounts 🎁</p>
+          </div>
+        </div>
+      </div>
+      <!-- !news nav -->
+
+      <div class="nav-bar" id="nav-bar">
+        <div onclick="openMenuBtn()" class="menu-bar">
+          <hr class="bar" />
+          <hr class="bar" />
+          <hr class="bar" />
+        </div>
+
+        <a href="/">
+          <div class="logo" id="logo">
+            <div class="logo-img">
+              <img loading="lazy" src="/assets/images/logo-icon.png" alt="OKAY-MART" />
+            </div>
+            <div class="logo-title" id="logo-title">
+              <span>OKAY-MART</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="profile">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+
+      <!-- ads nav -->
+      <div class="ads-bar" id="top">
+        <div class="ads-bar-content">
+          <div class="ads-text">
+            <p>price for fendi just dropped by 30% 🛍</p>
+            <p>Buy from us today because today is discount day 🎉</p>
+            <p>Hurray! Welcome to free 50% discounts 🎁</p>
+          </div>
+        </div>
+      </div>
+      <!-- !news nav -->
+    </header>
+    <!-- !HEADER -->
+
+    <!-- #BANNER -->
+    <section class="section">
+      <div class="sledir">
+        <div class="sledi">
+          <input type="radio" name="radio-btn" id="radio1" />
+          <input type="radio" name="radio-btn" id="radio2" />
+          <input type="radio" name="radio-btn" id="radio3" />
+          <input type="radio" name="radio-btn" id="radio4" />
+          <input type="radio" name="radio-btn" id="radio5" />
+          <input type="radio" name="radio-btn" id="radio6" />
+
+          <div class="st first">
+            <img loading="lazy"
+              src="assets/images/slideshow-banners/belle-banner1.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="st">
+            <img loading="lazy"
+              src="assets/images/slideshow-banners/belle-banner1.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="st">
+            <img loading="lazy"
+              src="assets/images/slideshow-banners/belle-banner1.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="st">
+            <img loading="lazy"
+              src="assets/images/slideshow-banners/belle-banner1.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="st">
+            <img loading="lazy"
+              src="assets/images/slideshow-banners/belle-banner1.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="st">
+            <img loading="lazy"
+              src="assets/images/slideshow-banners/belle-banner1.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="nav-auto">
+            <div class="a-b1"></div>
+            <div class="a-b2"></div>
+            <div class="a-b3"></div>
+            <div class="a-b4"></div>
+            <div class="a-b5"></div>
+            <div class="a-b6"></div>
+          </div>
+        </div>
+
+        <div class="nav-m">
+          <label for="radio1" class="m-btn"></label>
+          <label for="radio1" class="m-btn"></label>
+          <label for="radio1" class="m-btn"></label>
+          <label for="radio1" class="m-btn"></label>
+          <label for="radio1" class="m-btn"></label>
+          <label for="radio1" class="m-btn"></label>
+        </div>
+      </div>
+    </section>
+    <!-- !BANNER -->
+
+    <section class="product-type" id="product-type">
+      <div class="product-category">
+        <span>Our Product Categories</span>
+      </div>
+      <div class="container-btn" id="container-btn">
+        <button class="fashion-btn" id="fashion-btn">
+          <i class="fa-solid fa-vest"></i> Fashion
+        </button>
+        <button class="gadgets-btn" id="gadgets-btn">
+          <i class="fa-solid fa-laptop"></i> Gadgets
+        </button>
+        <button class="furniture-btn" id="furniture-">
+          <i class="fa-solid fa-couch"></i> Furniture
+        </button>
+        <button class="electronics-btn" id="electronics-btn">
+          <i class="fa-solid fa-tv"></i> Electronics
+        </button>
+      </div>
+    </section>
+
+    <!-- #product slide -->
+    <section class="product">
+      <h2 class="product-category">best selling</h2>
+      <button startAutoScroll() class="pre-btn"><span> < </span></button>
+      <button class="nxt-btn"><span> > </span></button>
+      <div class="product-container" id="product-container">
+        <!-- product card entry  -->
+        <!-- product card entry  -->
+        <!-- product card entry  -->
+        <!-- product card entry  -->
+      </div>
+    </section>
+    <!-- !product slide -->
+
+    <!-- #product grid -->
+    <section class="product-grid" id="product-grid">
+      <span class="product-titi">our products</span>
+
+      <!-- filter nav -->
+      <div class="filter" id="filter">
+        <div class="filter-btn product-filter" id="product-filter">
+          <button
+            onclick="dropDownMenu()"
+            class="filter-name"
+            id="filter-toggle"
+          >
+            product &nbsp;<i class="fa fa-chevron-down"></i>
+          </button>
+          <div class="filter-dropdown" id="filter-dropdown">
+            <button class="clothings" id="clothings">
+              Clothes <i class="fa-solid fa-tshirt"></i>
+            </button>
+            <button class="jewelries" id="jewelries">
+              Jewelries <i class="fa-solid fa-ring"></i>
+            </button>
+            <button class="phones" id="phones">
+              Phones <i class="fa-solid fa-mobile"></i>
+            </button>
+            <button class="laptops" id="laptops">
+              Laptops <i class="fa-solid fa-laptop"></i>
+            </button>
+            <button class="cosmetic" id="cosmetic">
+              Cosmetic <i class="fa-solid fa-eye"></i>
+            </button>
+            <button class="shoes" id="shoes">
+              Shoes <i class="fa-solid fa-shoe-prints"></i>
+            </button>
+            <button class="accessories" id="accessories grid-btn">
+              Accessories <i class="fa-solid fa-bolt"></i>
+            </button>
+          </div>
+        </div>
+        <div class="filter-btn category-filter" id="category-filter">
+          <button onclick="dropDown()" class="filler-name" id="filler-name">
+            Categories &nbsp;<i class="fa fa-chevron-down"></i>
+          </button>
+          <div class="filler-dropdown" id="filler-dropdown">
+            <button class="fashion" id="fashion">
+              Fashions <i class="fa-solid fa-vest"></i>
+            </button>
+            <button class="gadget" id="gadget">
+              Gadgets <i class="fa-solid fa-laptop"></i>
+            </button>
+            <button class="furniture" id="furniture">
+              Furniture <i class="fa-solid fa-couch"></i>
+            </button>
+            <button class="electronics" id="electronics">
+              Electronics <i class="fa-solid fa-plug-circle-bolt"></i>
+            </button>
+          </div>
+        </div>
+        <div class="filter-btn product-sort" id="product-sort">
+          <button onclick="sortMenu()" class="sort-name" id="sort-toggle">
+            Sort &nbsp;<i class="fa fa-chevron-down"></i>
+          </button>
+          <div class="sort-dropdown" id="sort-dropdown">
+            <button class="prices" id="prices">
+              Prices <i class="fa-solid fa-money-bill"></i>
+            </button>
+            <button class="discount" id="discount">
+              Discount <i class="fa-solid fa-tags"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- !filter nav -->
+
+      <!-- product grid -->
+      <div class="grid-container" id="grid-container"></div>
+      <!-- !product grid -->
+    </section>
+    <!-- !product grid -->
+
+    <!-- #footer -->
+    <footer class="footer">
+      <div class="about" id="about">
+        <span class="about-head"> About Us </span>
+        <h4 class="about-msg">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit
+          veritatis quo magni facilis similique doloribus quis suscipit, esse
+          enim nihil quas. Porro assumenda esse distinctio sit quo architecto
+          animi minima?
+        </h4>
+      </div>
+      <button class="top-btn" id="scrollToTopBtn">
+        <i class="fa fa-chevron-up"></i>
+      </button>
+      <div class="footer-links">
+        <div class="footer-cont q-shop" id="q-shop">
+          <h4 class="h4">Quick Shop</h4>
+          <ul>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Sportswear</a></li>
+            <li><a href="#">Sale</a></li>
+          </ul>
+        </div>
+        <div class="footer-cont contact" id="contact">
+          <h4>Social Platforms</h4>
+          <ul>
+            <li class="contact-li"><a href="/">Facebook</a></li>
+            <li class="contact-li"><a href="/">Instagram</a></li>
+            <li class="contact-li"><a href="/">Twitter</a></li>
+            <li class="contact-li"><a href="/">Whatsapp</a></li>
+            <li class="contact-li"><a href="mailto:">okaymart@panda.com</a></li>
+            <li class="contact-li"><a href="tel:+">(+234)81-okay-mart</a></li>
+          </ul>
+        </div>
+        <div class="footer-cont sp-links" id="sp-links">
+          <h4>Customer Service</h4>
+          <ul class="sp-ul">
+            <li class="sp-li"><a href="/contact-us.html">Contact Us</a></li>
+            <li class="sp-li"><a href="/faqs.html">Voucher & Tickets</a></li>
+            <li class="sp-li"><a href="/collection-page.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-cont info" id="info">
+          <h4>Information</h4>
+          <ul>
+            <li class="sp-li"><a href="/about-us.html">About us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms &amp; condition</a></li>
+            <li><a href="#">My Account</a></li>
+          </ul>
+        </div>
+        <div class="footer-cont cont">
+          <h4 class="h4">Contact Us</h4>
+          <ul class="addressFooter">
+            <li>
+              <i class="icon anm anm-map-marker-al"></i>
+              <p>55 Gallaxy Enque,<br />2568 steet, 23568 NY</p>
+            </li>
+            <li class="phone">
+              <i class="icon anm anm-phone-s"></i>
+              <p>(440) 000 000 0000</p>
+            </li>
+            <li class="email">
+              <i class="icon anm anm-envelope-l"></i>
+              <p>sales@yousite.com</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-logo">
+        <img loading="lazy" src="assets/images/logo-icon.png" alt="" class="logo-img" />
+        <span class="footer-name">okay mart</span>
+      </div>
+      <div class="trademark">
+        <h4>copyright: Panda &copy;</h4>
+      </div>
+    </footer>
+    <!-- !footer -->
+
+   <!-- #pop-up -->
+     <section class="pop-up " id="pop-up">
+<div class="product-popup" id="product-popup">
+    <div class="product-popup-content">
+      <div class="product-popup-banner">
+        <div class="product-popup-discount">
+          <h3>40% OFF</h3>
+        </div>
+        <div class="product-popup-image">
+          <img loading="lazy" src="assets/images/about1.jpg" alt="Product Image">
+        </div>
+        <div class="product-popup-buttons">
+          <button class="buy-now-btn">Buy Now</button>
+          <button onclick="closePopup()" class="close-popup-btn" id="close-popup-btn">&times;</button>
+        </div>
+      </div>
+      <div class="product-popup-info">
+        <div class="product-popup-name">
+            <h2>manga comics</h2>
+        </div>
+        <hr>
+        <div class="product-popup-brand">
+            <span>Brand :</span>
+            <h4>Fendi</h4>
+        </div>
+        <div class="product-popup-price">
+            <span>Price :</span>
+            <p>$500.00</p>
+            <h5>$500.00</h5>
+        </div>
+        <div class="product-popup-description">
+            <span>Description :</span>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eligendi quasi amet reiciendis nulla enim debitis excepturi quis pariatur eaque obcaecati sapiente consequatur magnam fuga hic, deserunt ipsa, odit explicabo possimus beatae corporis? Consequatur earum odit ratione totam nulla mollitia.
+          </p>
+        </div>
+        <div class="product-popup-stars">
+            <span>Rating</span>
+            <div class="stars">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+    <!-- !pop-up -->
+  </body>
+</html>

@@ -1,0 +1,30 @@
+"0": [
+          {
+            "id": "0",
+            "premium": true,
+            "featured": true,
+            "trending": true,
+            "page" : "/product-page.html",
+            "category": "fashion",
+            "tag": "clothings",
+            "class": "top",
+            "brand": "fendi",
+            "name": "turtle neck t-shirt",
+            "color": "white",
+            "size": "large(L)",
+            "oldPrice": 100,
+            "newPrice": 300,
+            "currency": "$",
+            "buyLink" : "https://wa.me/+2348103064692",
+            "discount": 60,
+            "image": "assets/images/product-images/product-image1.jpg",
+            "banner": "assets/images/product-images/product-image1.jpg",
+            "sumDescription": "A plain white t-shirt with a large F at the front and fendi at the back neck collar",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt voluptatum officia ut ab ad reprehenderit! Qui quis, ipsa repellendus omnis debitis nisi sunt explicabo quaerat praesentium aut, dignissimos officia distinctio!",
+            "thumbnails": [
+              "assets/images/product-images/product-image2.jpg",
+              "assets/images/product-images/product-image1.jpg",
+              "assets/images/product-images/product-image3.jpg"
+            ]
+          }
+        ]
