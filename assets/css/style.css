@@ -67,7 +67,7 @@ html {
   overflow-y: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Roboto", san-serif;
+  font-family: "inter", san-serif;
 }
 
 body {
@@ -481,20 +481,35 @@ section.section {
   border-radius: 10px;
   height: 500px;
   display: flex;
+  transition: opacity 1s ease-in-out;
+  animation: fadeBanner 1s;
 }
-.sledi input {
-  display: none;
-}
+
 .st {
   display: inline-flex;
   flex-direction: column;
   width: 20%;
-  transition: 2s;
+  transition: opacity 1s ease-in-out;
+  animation: fadeBanner 1s;
+  /* transition: 2s; */
+  opacity: 0;
 }
+
+.st.first{
+  /* opacity: 1; */
+  width: 25%;
+}
+
+.st.active{
+  opacity: 1;
+}
+
+
 .st img {
   width: 90vw;
   height: 500px;
   box-shadow: var(--box-shadow);
+  object-fit: cover;
 }
 
 .st:hover a{
@@ -522,52 +537,16 @@ section.section {
   border: none;
   background: var(--faint-gold);
   color: var(--silver);
+  opacity: 0;
 }
 
-
-.nav-m {
-  position: absolute;
-  width: auto;
-  margin-top: -40px;
-  display: none;
-  justify-content: center;
-  left: 50%;
-  background: transparent;
-  transform: translateX(-50%);
-}
-.m-btn {
-  border: 2px solid var(--gold);
-  padding: 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 1s;
-}
-
-.m-btn:not(:last-child) {
-  margin-right: 30px;
-}
-
-.m-btn:hover {
-  background-color: var(--gold);
-}
-
-#radio1:checked ~ .first {
-  margin-left: 0;
-}
-#radio2:checked ~ .first {
-  margin-left: -20%;
-}
-#radio3:checked ~ .first {
-  margin-left: -40%;
-}
-#radio4:checked ~ .first {
-  margin-left: -60%;
-}
-#radio5:checked ~ .first {
-  margin-left: -80%;
-}
-#radio6:checked ~ .first {
-  margin-left: -100%;
+@keyframes fadeBanner {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .nav-auto {
@@ -594,24 +573,6 @@ section.section {
   justify-content: center;
 }
 
-#radio1:checked ~ .nav-auto .a-b1 {
-  background-color: var(--gold);
-}
-#radio2:checked ~ .nav-auto .a-b2 {
-  background-color: var(--gold);
-}
-#radio3:checked ~ .nav-auto .a-b3 {
-  background-color: var(--gold);
-}
-#radio4:checked ~ .nav-auto .a-b4 {
-  background-color: var(--gold);
-}
-#radio5:checked ~ .nav-auto .a-b5 {
-  background-color: var(--gold);
-}
-#radio6:checked ~ .nav-auto .a-b6 {
-  background-color: var(--gold);
-}
 /* banner */
 
 /* cat */
@@ -718,16 +679,20 @@ section.product {
 
 .product-image {
   position: relative;
-  width: 100%;
-  height: 350px;
+  margin: 0;
+  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 200px;
   overflow: hidden;
   align-items: center;
 }
 
 .product-thumb {
-  width: 100%;
+  width: 150%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   overflow: hidden;
   border-radius: 10px;
 }
@@ -1088,8 +1053,8 @@ a button.card-btn:hover {
 .grid-image {
   display: block;
   /* position: relative; */
-  width: 100%;
-  height: 100%; /* Set a maximum height for the image */
+  width: 100px;
+  height: 100px; /* Set a maximum height for the image */
   overflow: hidden; 
   /* background: white; */
   margin: 2px;
@@ -1105,7 +1070,7 @@ img.grid-thumb {
   width: 100%;
   height: 100%;
   border-radius: 9px;
-  object-fit: stretch; /* Maintain aspect ratio and cover the container */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
 }
 
 .grid-content:hover button.grid-btn{
@@ -1179,17 +1144,19 @@ button.grid-btn:hover {
 /* footer */
 .footer {
   display: flex;
+  position: relative;
+  bottom: 2px !important;
   flex-direction: column;
   /* margin: auto 10px; */
   padding: 0 10px;
   justify-content: center;
   align-items: center;
   background: var(--ghost-silver);
-  height: auto;
+  height: 100%;
   width: 101vw;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  bottom: -10px;
+  /* margin-bottom: -20px; */
 }
 
 .about {
