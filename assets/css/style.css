@@ -1025,12 +1025,14 @@ a button.card-btn:hover {
   display: grid;
   grid-template-columns: repeat(
     auto-fill,
-    minmax(280px, 1fr)
+    minmax(250px, 1fr)
   ); /* Responsive columns */
   gap: 20px; /* Gap between product cards */
   margin-top: 20px;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
+  min-width: 75vw;
+  margin: 10px 20px;
 }
 
 .grid-content {
