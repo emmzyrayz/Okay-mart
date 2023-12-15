@@ -1,1059 +1,783 @@
-/*********************************************************************************
+// Javascript for index.html
 
-	Template Name: Belle - Multipurpose eCommerce Bootstrap4 HTML Template
-	Description: A perfect template to build beautiful and unique Glasses websites. It comes with nice and clean design.
-	Version: 1.0
+// pre loader START
+// Wait for the DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to hide the pre-loader
+  function pre_loader() {
+    var preLoader = document.getElementById("pre-loader");
+    preLoader.style.opacity = "0"; // Set the opacity to 0 for fade out effect
+    setTimeout(function () {
+      preLoader.style.display = "none"; // Hide the pre-loader after fading out
+    }, 3000); // Adjust the delay (in milliseconds) as needed
+  }
 
-**********************************************************************************/
+  // Call the pre_loader function
+  pre_loader();
+  // PRE LOADER STOP
 
-/*************************************************
-  1. Preloader Loading
-  2. Promotional Bar Header
-  3. Currency Show/Hide dropdown  
-  4. Language Show/Hide dropdown
-  5. Top Links Show/Hide dropdown
-  6. Minicart Dropdown
-  7. Sticky Header
-  8. Search Trigger
-  9. Mobile Menu
-  10 Slick Slider
-	 10.1 Homepage Slideshow 
-	 10.2 Product Slider Slick
-	 10.3 Product Slider Slick Style2
-	 10.4 Product Slider Slick Style3
-	 10.5 Product Slider Slick Fullwidth
-	 10.6 Product Slider Slick Product Page
-	 10.7 Collection Slider Slick
-	 10.8 Collection Slider Slick 4 items
-	 10.9 Logo Slider Slick
-	 10.10 Testimonial Slider Slick
-  11. Tabs With Accordian Responsive
-  12. Sidebar Categories Level links
-  13. Price Range Slider
-  14. Color Swacthes
-  15. Footer links for mobiles
-  16. Site Animation
-  17. SHOW HIDE PRODUCT TAG
-  18. SHOW HIDE PRODUCT Filters
-  19. Timer Count Down
-  20. Scroll Top
-  21. Height Product Grid Image
-  22. Product details slider 2
-  23. Product details slider 1
-  24. Product Zoom
-  25. Product Page Popup
-  26. Quantity Plus Minus
-  27. Visitor Fake Message
-  28. Product Tabs
-  29. Promotion / Notification Cookie Bar 
-  30. Image to background js
-  31. COLOR SWATCH ON COLLECTION PAGE
-  32. Related Product Slider
-  33. Infinite Scroll js
-*************************************************/
+  // AGE CALCULATOR START
+  // JavaScript to calculate age
+  const birthdate = new Date("2005-08-25"); // Replace with your birthdate
+  const currentDate = new Date();
 
-(function ($) {
-	// Start of use strict
-	'use strict';
-	
-    /*-----------------------------------------
-	  1. Preloader Loading ----------------------- 
-	  -----------------------------------------*/
-	function pre_loader(){
-		$("#load").fadeOut();
-		$('#pre-loader').delay(0).fadeOut('slow');
-	}
-	pre_loader();
-		
-	/*-----------------------------------------
-	 2. Promotional Bar Header ------------------
-	  -----------------------------------------*/
-	function promotional_bar(){
-		$(".closeHeader").on('click',function() {
-			$(".promotion-header").slideUp();  
-			Cookies.set('promotion', 'true', { expires: 1});  
-			return false;
-		});
-	}
-	promotional_bar();
-	
-	/*-----------------------------------------
-	 3. Currency Show/Hide dropdown -----------
-	  -----------------------------------------*/
-	function currency_dropdown(){
-		$(".selected-currency").on("click", function() {
-		  $("#currencies").slideToggle();      
-		});
-		$("#currencies li").on("click", function() {
-			$(this).parent().slideUp();
-		});
-	}
-	currency_dropdown();
-	
-	/*-----------------------------------------
-	  4. Language Show/Hide dropdown ----------
-	  -----------------------------------------*/
-	function language_dropdown(){  
-		$(".language-dd").on("click", function() {
-		  $("#language").slideToggle();      
-		});
-		$("#language li").on("click", function() {
-			$(this).parent().slideUp();
-		});
-	}
-	language_dropdown();
-	
-	/*-----------------------------------------
-	  5. Top Links Show/Hide dropdown ---------
-	  -----------------------------------------*/
-	  function userlink_dropdown(){  
-		$('.top-header .user-menu').on("click", function() {
-			if ($(window).width() < 990 ) {
-				$(this).next().slideToggle(300);
-				$(this).parent().toggleClass("active");
-			}
-		});
-	 }
-	 userlink_dropdown();
-	 
-	 /*-----------------------------------------
-	  6. Minicart Dropdown ---------------------
-	  ------------------------------------------ */
-	  function minicart_dropdown(){
-		$(".site-header__cart").on("click", function(i) {
-			i.preventDefault();
-			$("#header-cart").slideToggle();
-		});
-		// Hide Cart on document click
-		$("body").on("click", function(event ) {
-		  var $target = $(event.target);
-		  if(!$target.parents().is(".site-cart") && !$target.is(".site-cart")){
-			$("body").find("#header-cart").slideUp();
-		  }
-		});
-	  }
-	 minicart_dropdown();
-	
-	/*-----------------------------------------
-	  7. Sticky Header ------------------------
-	  -----------------------------------------*/
-	window.onscroll = function(){ myFunction() };
-    function myFunction() {
-      if($(window).width()>1199) {
-            if($(window).scrollTop()>145){
-              $('.header-wrap').addClass("stickyNav animated fadeInDown");                   
+  const age = currentDate.getFullYear() - birthdate.getFullYear();
+  document.getElementById("age").textContent = age + "yrs";
+  // AGE CALCULATOR END
+});
+
+// menu buttons start
+
+function catMenuBtn() {
+  var menuSub = document.getElementById("sub-links");
+  var body = document.querySelector("body");
+
+  menuSub.classList.toggle("active");
+  body.classList.toggle("active");
+}
+
+function closeMenuBtn() {
+  var menuClose = document.getElementById("menu-con");
+  var body = document.querySelector("body");
+  var bar = document.querySelector(".menu-bar");
+
+  bar.classList.remove("active");
+  menuClose.classList.remove("active");
+  body.classList.remove("active");
+}
+
+function openMenuBtn() {
+  var menuOpen = document.getElementById("menu-con");
+  var body = document.querySelector("body");
+  var bar = document.querySelector(".menu-bar");
+
+  bar.classList.add("active");
+  menuOpen.classList.add("active");
+  body.classList.add("active");
+}
+
+// menu buttons end
+
+// BANNERS FUNCTION START
+document.addEventListener("DOMContentLoaded", function () {
+  const banners = document.querySelectorAll(".st");
+  const navAutoItems = document.querySelectorAll(".nav-auto div");
+  let currentBannerIndex = 0;
+
+  function showBanner(index) {
+    banners.forEach((banner, i) => {
+      if (i === index) {
+        banner.style.opacity = 1; // Make the banner visible
+        banner.style.display = "inline-flex";
+      } else {
+        banner.style.opacity = 0; // Hide other banners
+        banner.style.display = "none";
+      }
+    });
+
+    navAutoItems.forEach((nav, i) => {
+      nav.style.backgroundColor = i === index ? "var(--gold)" : "transparent";
+    });
+  }
+
+  function nextBanner() {
+    currentBannerIndex = (currentBannerIndex + 1) % banners.length;
+    showBanner(currentBannerIndex);
+  }
+
+  function startBannerSlideshow() {
+    showBanner(currentBannerIndex);
+    setInterval(nextBanner, 6000); // Change banner every 6 seconds
+  }
+
+  navAutoItems.forEach((nav, index) => {
+    nav.addEventListener("click", () => {
+      currentBannerIndex = index;
+      showBanner(currentBannerIndex);
+    });
+  });
+
+  startBannerSlideshow();
+});
+// BANNER FUNCTION STOP
+
+// CATEGORIES<->FILTER<->SORT BUTTONS
+var activeDropdown = null;
+
+function dropDownMenu() {
+  var element = document.getElementById("filter-dropdown");
+
+  // Close the previously active dropdown if there is one
+  if (activeDropdown && activeDropdown !== element) {
+    activeDropdown.classList.remove("active");
+  }
+
+  element.classList.toggle("active");
+  activeDropdown = element;
+}
+
+function dropDown() {
+  var element = document.getElementById("filler-dropdown");
+
+  // Close the previously active dropdown if there is one
+  if (activeDropdown && activeDropdown !== element) {
+    activeDropdown.classList.remove("active");
+  }
+
+  element.classList.toggle("active");
+  activeDropdown = element;
+}
+
+function sortMenu() {
+  var element = document.getElementById("sort-dropdown");
+
+  // Close the previously active dropdown if there is one
+  if (activeDropdown && activeDropdown !== element) {
+    activeDropdown.classList.remove("active");
+  }
+
+  element.classList.toggle("active");
+  activeDropdown = element;
+}
+
+// FILTER, SORT FUNCTIONS
+document.addEventListener("DOMContentLoaded", function() {
+   // filter and sort function
+      // Add a click event listener to each category button
+      document.querySelectorAll(".filler-dropdown button").forEach((button) => {
+        button.addEventListener("click", () => {
+          // Extract the selected category from the button's class
+          const selectedCategory = button.classList[0]; // e.g., "fashion"
+
+          // Get all the product cards
+          const productCards = document.querySelectorAll(".item.sort");
+
+          // Loop through each product card
+          productCards.forEach((card) => {
+            // Check if the card has the selected category class
+            if (card.classList.contains(selectedCategory)) {
+              // Display the matching card
+              card.style.display = "block";
             } else {
-              $('.header-wrap').removeClass("stickyNav fadeInDown");              
+              // Hide non-matching cards
+              card.style.display = "none";
             }
-       }
-    }
-	
-	/*-----------------------------------------
-	  8. Search Trigger -----------------------
-	  ----------------------------------------- */
-	function search_bar(){
-		$('.search-trigger').on('click', function () {
-			const search = $('.search');
-	
-			if (search.is('.search--opened')) {
-				search.removeClass('search--opened');
-			} else {
-				search.addClass('search--opened');
-				$('.search__input')[0].focus();
-			}
-		});
-	}
-	search_bar();
-	$(document).on('click', function (event) {
-		if (!$(event.target).closest('.search, .search-trigger').length) {
-			$('.search').removeClass('search--opened');
-		}
-	});
-	
-	/*-----------------------------------------
-	  9. Mobile Menu --------------------------
-	  -----------------------------------------*/
-	var selectors = {
-      	body: 'body',
-      	sitenav: '#siteNav',
-      	navLinks: '#siteNav .lvl1 > a',
-      	menuToggle: '.js-mobile-nav-toggle',
-      	mobilenav: '.mobile-nav-wrapper',
-      	menuLinks: '#MobileNav .anm',
-      	closemenu: '.closemobileMenu'
-	};
-     
-  	$(selectors.navLinks).each(function(){
-        if($(this).attr('href') == window.location.pathname) $(this).addClass('active');
+          });
+          // Update the filter button name with the selected category
+          document.getElementById("filler-name").textContent =
+            button.textContent;
+        });
+      });
+
+      // Add a click event listener to each category button
+      document.querySelectorAll(".filter-dropdown button").forEach((button) => {
+        button.addEventListener("click", () => {
+          // Extract the selected category from the button's class
+          const selectedCategory = button.classList[0]; // e.g., "fashion"
+
+          // Get all the product cards
+          const productCards = document.querySelectorAll(".item.sort");
+
+          // Loop through each product card
+          productCards.forEach((card) => {
+            // Check if the card has the selected category class
+            if (card.classList.contains(selectedCategory)) {
+              // Display the matching card
+              card.style.display = "block";
+            } else {
+              // Hide non-matching cards
+              card.style.display = "none";
+            }
+          });
+          // Update the filter button name with the selected category
+          document.getElementById("filter-toggle").textContent =
+            button.textContent;
+        });
+      });
+});
+document.addEventListener("DOMContentLoaded", function () {
+        // Select the buttons in the sort-dropdown
+        const sortButtons = document.querySelectorAll(".sort-dropdown button");
+
+        // Function to sort and update the product cards
+        function updateSortedCards(sortingType) {
+          // Select the product cards again inside this function
+          const productCards = document.querySelectorAll(".item.sort");
+
+          // Convert the NodeList of product cards into an array
+          const productCardArray = Array.from(productCards);
+
+          // Sort the product cards based on the sorting type
+          productCardArray.sort((a, b) => {
+            const aValue = parseFloat(a.getAttribute(`data-${sortingType}`));
+            const bValue = parseFloat(b.getAttribute(`data-${sortingType}`));
+
+            if (sortingType === "prices") {
+              return aValue - bValue; // Sort by price in ascending order
+            } else if (sortingType === "discount") {
+              return bValue - aValue; // Sort by discount in descending order
+            }
+          });
+
+          // Clear the product container
+          const productContainer = document.getElementById("grid-container");
+          productContainer.innerHTML = ""; // Clear the container
+          console.log("pc.innerhtml", productContainer.innerHTML);
+
+          // Append the sorted product cards back to the container
+          productCardArray.forEach((card) => {
+            productContainer.appendChild(card);
+          });
+        }
+
+        // Add click event listeners to the sort buttons
+        sortButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Get the sorting type (prices or discount) from the button's id
+            const sortingType = button.id;
+
+            // Update the sorted cards
+            updateSortedCards(sortingType);
+          });
+        });
+      });
+// CATEGORIES<->FILTER<->SORT BUTTONS
+
+// PRODUCT SLIDER STARTS
+document.addEventListener("DOMContentLoaded", function () {
+  // Fetch JSON data from file
+  fetch("/assets/json/data.json")
+    .then((response) => response.json())
+    .then((data) => {
+
+      // Populate the second section
+      const newSectionContent = document.getElementById("grid-container");
+      const productsContainer = document.getElementById("product-container");
+      populateSection(newSectionContent, data);
+
+      // Iterate through users
+      for (const userId in data) {
+        const user = data[userId][0];
+
+        // Iterate through user's products
+        for (const productId in user.product) {
+          const productArray = user.product[productId];
+
+          console.log(productArray);
+          // Iterate through product items in the array
+          productArray.forEach((product) => {
+            // Create a product card for each product
+            const div = document.createElement("div");
+            div.classList.add("item");
+
+            div.innerHTML = `
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img loading="lazy" src="${product.image}" alt="product image" class="product-thumb">
+                  <a href="${product.productLink}"><button class="card-btn">Add to wishlist</button></a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">${product.name}</h2>
+                  <p class="product-short-description">${product.description}</p>
+                  <span class="price">${product.newPrice}.00</span><span class="actual-price">${product.oldPrice}.00</span>
+                  <div class="product-review">
+                    <i class="font-13 fa fa-star"></i>
+                    <i class="font-13 fa fa-star"></i>
+                    <i class="font-13 fa fa-star"></i>
+                    <i class="font-13 fa fa-star-o"></i>
+                    <i class="font-13 fa fa-star-o"></i>
+                  </div>
+                  <ul class="swatches">
+                    <li class="swatch medium rounded"><img loading="lazy" src="${product.image}" alt="image" /></li>
+                    <li class="swatch medium rounded"><img loading="lazy" src="${product.image}" alt="image" /></li>
+                    <li class="swatch medium rounded"><img loading="lazy" src="${product.image}" alt="image" /></li>
+                    <li class="swatch medium rounded"><img loading="lazy" src="${product.image}" alt="image" /></li>
+                    <li class="swatch medium rounded"><img loading="lazy" src="${product.image}" alt="image" /></li>
+                    <li class="swatch medium rounded"><img loading="lazy" src="${product.image}" alt="image" /></li>
+                  </ul>
+                </div>
+              </div>
+            `;
+
+            productsContainer.appendChild(div);
+          });
+        }
+      }
+
+      // Function to populate a section with data
+      function populateSection(sectionElement, data) {
+        for (const key in data) {
+          const user = data[key][0];
+          const products = user.product;
+
+          // Iterate through products
+          for (const productId in products) {
+            const productArray = products[productId];
+
+            // Iterate through product items in the array
+            productArray.forEach((product) => {
+              // Create an element for each item
+              const itemElement = document.createElement("div");
+              itemElement.classList.add(
+                "item",
+                "sort",
+                `${product.category}`,
+                `${product.tag}`
+              );
+
+              // Set data attributes
+              itemElement.setAttribute("data-id", product.category);
+              itemElement.setAttribute("data-tag", product.tag);
+              itemElement.setAttribute("data-price", product.newPrice);
+              itemElement.setAttribute("data-discount", product.discount);
+
+              // Populate the item element with data
+              itemElement.innerHTML = `
+      <div class="grid-content " id="grid-content">
+      <div class="grid-image" id="grid-image">
+          <img loading="lazy" src="${product.image}" alt="product img" class="grid-thumb">
+          <button onclick="popUp()" class="grid-btn" id="grid-btn grid-btn-${user.id}">Add to wishlist <i class="fa-solid fa-cart-plus"></i></button>
+      </div>
+      <div class="grid-info">
+          <h2 class="grid-brand">${product.brand}</h2>
+          <p class="grid-description">${product.sumDescription}</p>
+          <span class="grid-price">${product.currency} ${product.newPrice}.00</span>
+          <div class="product-review">
+              <i class="font-13 fa fa-star"></i>
+              <i class="font-13 fa fa-star"></i>
+              <i class="font-13 fa fa-star"></i>
+              <i class="font-13 fa fa-star-o"></i>
+              <i class="font-13 fa fa-star-o"></i>
+          </div>
+      </div>
+  </div>
+      `;
+
+              // Append the item to the section
+              sectionElement.appendChild(itemElement);
+              console.log("appended child:", itemElement);
+            });
+          }
+        }
+      }
+
+      // After populating product cards, set up the navigation buttons
+      const productContainer = document.getElementById("product-container");
+      const prevButton = document.querySelector(".pre-btn");
+      const nextButton = document.querySelector(".nxt-btn");
+
+      let scrollPosition = 0;
+      const containerWidth = productContainer.clientWidth;
+
+      // Function to scroll to the next product card
+      function scrollNext() {
+        if (scrollPosition < productContainer.scrollWidth - containerWidth) {
+          scrollPosition += containerWidth;
+          productContainer.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth",
+          });
+        } else {
+          // If we're at the end, loop back to the start
+          scrollPosition = 0;
+          productContainer.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      // Function to scroll to the previous product card
+      function scrollPrev() {
+        if (scrollPosition > 0) {
+          scrollPosition -= containerWidth;
+          productContainer.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth",
+          });
+        } else {
+          // If we're at the start, loop to the end
+          scrollPosition = productContainer.scrollWidth - containerWidth;
+          productContainer.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      // Add click event listeners to the buttons
+      nextButton.addEventListener("click", scrollNext);
+      prevButton.addEventListener("click", scrollPrev);
+
+      // Auto-scroll loop function
+      let autoScrollInterval;
+
+      function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+          scrollNext();
+        }, 3000); // Adjust the interval (in milliseconds) as needed
+      }
+
+      // Start auto-scroll loop when the page loads
+      startAutoScroll();
+
+      // Stop auto-scroll loop when the user interacts with the buttons
+      nextButton.addEventListener("click", () => {
+        clearInterval(autoScrollInterval);
+      });
+
+      prevButton.addEventListener("click", () => {
+        clearInterval(autoScrollInterval);
+      });
     })
-	
-  	$(selectors.menuToggle).on("click",function(){
-      body: 'body',
-      $(selectors.mobilenav).toggleClass("active");
-      $(selectors.body).toggleClass("menuOn");
-      $(selectors.menuToggle).toggleClass('mobile-nav--open mobile-nav--close');
-    });
-  
-    $(selectors.closemenu).on("click",function(){
-      body: 'body',
-      $(selectors.mobilenav).toggleClass("active");
-      $(selectors.body).toggleClass("menuOn");
-      $(selectors.menuToggle).toggleClass('mobile-nav--open mobile-nav--close');
-    });
-    $("body").on('click', function (event) {
-      var $target = $(event.target);
-      if(!$target.parents().is(selectors.mobilenav) && !$target.parents().is(selectors.menuToggle) && !$target.is(selectors.menuToggle)){
-          $(selectors.mobilenav).removeClass("active");
-          $(selectors.body).removeClass("menuOn");
-          $(selectors.menuToggle).removeClass('mobile-nav--close').addClass('mobile-nav--open');
+    .catch((error) => console.error("Error fetching data:", error));
+});
+// PRODUCT SLIDER ENDS
+
+
+// Fetch and display a single product's data, including thumbnails
+function fetchProductData(productId) {
+  // Fetch the product data for the given productId from your data.json file
+  fetch("/assets/json/data.json")
+    .then((res) => res.json())
+    .then((data) => {
+      // Find the product data with the matching productId
+      const productData = data[productId][0].product[productId][0]
+
+      // Create a container element for the product carousel
+      const carouselContainer = document.createElement("div")
+      carouselContainer.classList.add("carousel-container")
+
+      $(document).ready(function () {
+        const $carousel = $("#pr_top-container .carousel-container .carousel img.carousel-img")
+        const $thumbnails = $(".thumbnail-container img.thumbnail")
+    
+        console.log("carousel image:", $carousel)
+        console.log("thumbnails image:", $thumbnails)
+    
+        // i console.logged $carousel and $thumbnails but it reads "ce. fn. init [prevObject: ce. fn.init(1)] length: 0"
+        $thumbnails.on("click", function () {
+          console.log("Clicked on thumbnail");
+          const index = $(this).index();
+          console.log("index:", index);
+          $carousel.fadeTo(200, 0, function () {
+            $carousel.hide();
+            console.log("carousel hidden");
+            $carousel.eq(index).show().fadeTo(200, 1);
+            console.log("New carousel item shown");
+          });
+          $thumbnails.css("opacity", "0.5");
+          $(this).css("opacity", "1");
+          console.log("Opacity updated")
+        });
+      });
+
+      // Check if the Web Share API is supported by the browser
+if (navigator.share) {
+  const shareButton = document.getElementById("shareButton");
+
+  // Add a click event listener to the share button
+  shareButton.addEventListener("click", async () => {
+    try {
+      const shareData = {
+        title: "Check out this product",
+        text: "I found an amazing product you might like!",
+        url: window.location.href,
+        // Add an image to the shared content
+        files: [new File(["product-image1-1.jpg"], "product-image1-1.jpg", { type: "image/jpg" })],
+      };
+
+      // Use the Web Share API to open the share dialog
+      await navigator.share(shareData);
+    } catch (error) {
+      console.error("Error sharing:", error);
+    }
+  });
+} else {
+  // Web Share API not supported, provide an alternative behavior
+  shareButton.style.display = "none"; // Hide the share button if not supported
+}
+
+      // Create the carousel element
+      const carousel = document.createElement("div")
+      carousel.classList.add("carousel")
+
+      // Create the thumbnail container element
+      const thumbnailContainer = document.createElement("div")
+      thumbnailContainer.classList.add("thumbnail-container")
+
+      // create the description container element
+      const detail = document.createElement("div");
+      const description = document.createElement("div");
+      const specifications = document.createElement("div");
+      const descContainer = document.getElementById("desc-container");
+      console.log("description:", productData.description);
+
+      detail.classList.add("description", "detail");
+      description.classList.add("description");
+      specifications.classList.add("description", "specification");
+
+
+      // Iterate through the product details
+      detail.innerHTML=`
+        <span style="font-size: 20px; font-weight: 700; margin-left: 20px;">Specs</span>
+        <p>
+          <ul style="text-align: left; margin-left: 40px; gap: 10px; font-size: 15px;">
+            <li>Brand: ${productData.brand}</li>
+            <li>Color: <span style="color: ${productData.color};">${productData.color}</span></li>
+            <li>Size: ${productData.size}</li>
+          </ul>
+        </p>
+      `;
+      descContainer.appendChild(detail);
+      console.log("detail:", detail);
+
+      description.innerHTML=`
+        <span style="font-size: 23px; font-weight: 700; margin-left: 20px;">Description</span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;${productData.description}</p>
+      `;
+      descContainer.appendChild(description);
+      console.log("description:", description);
+
+      // Iterate through the thumbnails and create img elements
+      productData.thumbnails.forEach((thumbnailURL) => {
+        const thumbnailImage = document.createElement("img")
+        const carouselImage = document.createElement("img")
+        thumbnailImage.src = thumbnailURL
+        carouselImage.src = thumbnailURL
+        thumbnailImage.alt = "thumbnail"
+        carouselImage.alt = "carouselImage"
+        thumbnailImage.classList.add("thumbnail")
+        carouselImage.classList.add("carousel-img")
+        carousel.appendChild(carouselImage)
+
+        // Create a corresponding thumbnail in the thumbnail container
+        const thumbnailClone = thumbnailImage.cloneNode(true)
+        thumbnailContainer.appendChild(thumbnailClone)
+      })
+
+      // Append the carousel and thumbnail container to the carousel container
+      carouselContainer.appendChild(carousel)
+      carouselContainer.appendChild(thumbnailContainer)
+
+      // Append the carousel container to the product page (replace with your target element)
+      const productPage = document.getElementById("pr_top-container") // Replace with your actual product page element
+      productPage.appendChild(carouselContainer)
+    })
+    .catch((error) => console.error("Error fetching product data:", error))
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Call the fetchProductData function with the desired productId
+  fetchProductData(0) // Replace with the actual productId you want to display
+});
+
+// fetch thumbnail end
+
+
+// FETCH TRENDING PRODUCT START
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("/assets/json/data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const fashionSlider = document.getElementById("fashion-slider");
+      // fashion banner
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".fashion-slide");
+        let currentIndex = 0;
+
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            if (i === index) {
+              setTimeout(() => {
+                slide.classList.add("show");
+              }, 1000);
+              slide.style.display = "flex";
+            } else {
+              setTimeout(() => {
+                slide.style.display = "none";
+              }, 1000);
+
+              slide.classList.remove("show");
+            }
+          });
+        }
+
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % slides.length;
+          showSlide(currentIndex);
+          setTimeout(nextSlide, 8000); // 8 seconds delay before next slide
+        }
+
+        // Initial setup
+        showSlide(currentIndex);
+        setTimeout(nextSlide, 8000); // Start the slideshow
+      });
+
+      for (const key in data) {
+        const user = data[key][0];
+        const fashions = Object.values(user.product);
+
+        for (const product of fashions) {
+          if (product[0].trending === true) {
+            const fashionDiv = document.createElement("div");
+            fashionDiv.classList.add("fashion-slide");
+
+            fashionDiv.innerHTML = `
+            <div class="fashion-image">
+                <span>Trending  </span>
+                <img loading="lazy" src="${product[0].image}" alt="jewelry product">
+            </div>
+            <div class="fashion-desc">
+                <div class="name">${product[0].name}</div>
+                <div class="detail">${product[0].description}</div>
+                <a href="/product-page.html">
+                    <button class="btn">View Product</button>
+                </a>
+            </div>
+            `;
+
+            fashionSlider.appendChild(fashionDiv);
+          }
+        }
       }
     });
-	$(selectors.menuLinks).on('click', function(e) {
-		e.preventDefault();
-		$(this).toggleClass('anm-plus-l anm-minus-l');
-		$(this).parent().next().slideToggle();
-    });
-	
-	
-	/*-----------------------------------------
-	  10.1 Homepage Slideshow -----------------
-	  -----------------------------------------*/
-	  function home_slider(){
-		 $('.home-slideshow').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			fade: true,
-			arrows: true,
-			autoplay: true,
-			autoplaySpeed: 4000,
-			lazyLoad: 'ondemand'
-		  });
-	  }
-	  home_slider();
-	
-	// Full Size Banner on the Any Screen
-	$(window).resize(function() {
-		var bodyheight = $(this).height() - 20;
-		$(".sliderFull .bg-size").height(bodyheight);
-	}).resize();
-	
-	/*-----------------------------------------
-	  10.2 Product Slider Slick ---------------
-	  -----------------------------------------*/
-	function product_slider(){
-	 $('.productSlider').slick({
-		dots: false,
-		infinite: true,
-		slidesToShow: 4,
-		slidesToScroll: 1,
-		arrows: true,
-		responsive: [
-		{
-		  breakpoint: 1024,
-		  settings: {
-			slidesToShow: 3,
-			slidesToScroll: 1
-		  }
-		},
-		{
-		  breakpoint: 600,
-		  settings: {
-			slidesToShow: 2,
-			slidesToScroll: 1
-		  }
-		},
-		{
-		  breakpoint: 480,
-		  settings: {
-			slidesToShow: 1,
-			slidesToScroll: 1
-		  }
-		}
-		]
-	
-	  });
-	}
-	product_slider();
+});
 
-	/*-----------------------------------------
-	  10.3 Product Slider Slick Style2 --------
-	  -----------------------------------------*/
-	function product_slider1(){
-		$('.productSlider-style1').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 3,
-			slidesToScroll: 1,
-			arrows: true,
-			responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1
-			  }
-			}
-			]
-		});
-	}
-	product_slider1();
+// TRENDING PRODUCT END 
 
-	/*-----------------------------------------
-	  10.4 Product Slider Slick Style3 --------
-	  -----------------------------------------*/
-	function product_slider2(){
-		$('.productSlider-style2').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 5,
-			slidesToScroll: 1,
-			arrows: true,
-			responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1
-			  }
-			}
-			]
-		});
-	}
-	product_slider2();
+// Fetch and display featured products
+document.addEventListener("DOMContentLoaded", function () {
+  // Fetch JSON data from file
+  fetch("/assets/json/data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const featuredProductContainer = document.getElementById("feature-grid");
 
-	/*-----------------------------------------
-	  10.5 Product Slider Slick Fullwidth -----
-	  ----------------------------------------- */
-	  function product_slider_full(){
-		$('.productSlider-fullwidth').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 6,
-			slidesToScroll: 1,
-			arrows: true,
-			responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1
-			  }
-			}
-			]
-		});
-	  }
-	  product_slider_full();
+      for (const key in data) {
+        const user = data[key][0];
+        const products = Object.values(user.product); // Convert the object to an array
 
-	/*-----------------------------------------
-	  10.6 Product Slider Slick Product Page --
-	  ----------------------------------------- */
-	function product_slider_ppage(){
-		$('.productPageSlider').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 5,
-			slidesToScroll: 1,
-			arrows: true,
-			responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 680,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 380,
-			  settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1
-			  }
-			}
-			]
-		});
-	}
-	product_slider_ppage();
+        // Iterate through products for this user
+        for (const product of products) {
+          // Check if the product is featured
+          if (product[0].featured === true) {
+            // Create a new div element for displaying the featured product
+            const featuredDiv = document.createElement("div");
+            featuredDiv.classList.add("feature-card");
 
-	/*-----------------------------------------
-	  10.7 Collection Slider Slick ------------
-	  ----------------------------------------- */
-	function collection_slider(){
-		$('.collection-grid').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 5,
-			slidesToScroll: 1,
-			arrows: true,
-			responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			}
-			]
-		});
-	}
-	collection_slider();
+            featuredDiv.innerHTML = `
+              <div class="featured-image">
+                <span class="discount-tag">50% off</span>
+                <img loading="lazy"
+                  src="${product[0].image}"
+                  alt="featured image"
+                  class="feature-thumb"
+                />
+                <button class="card-btn" id="card-btn">
+                  Add to wishlist <i class="fa-solid fa-cart-plus"></i>
+                </button>
+              </div>
+              <div class="feature-info">
+                <h3 class="feature-name">${product[0].name}</h3>
+                <h5 class="feature-brand">${product[0].brand}</h5>
+                <div class="feature-prices">
+                  <span class="feature-price">
+                    ${product[0].currency}${product[0].newPrice}.00
+                  </span>
+                </div>
+              </div>
+            `;
 
-	/*-----------------------------------------
-	  10.8 Collection Slider Slick 4 items ----
-	  ----------------------------------------- */	  
-	function collection_slider1(){
-		$('.collection-grid-4item').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 4,
-			slidesToScroll: 1,
-			arrows: true,
-			responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			}
-			]
-		});
-	}
-	collection_slider1();
-
-	/*-----------------------------------------
-	  10.9 Logo Slider Slick ------------------
-	  -----------------------------------------*/
-	function logo_slider(){
-		$('.logo-bar').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 6,
-			slidesToScroll: 1,
-			arrows: true,
-			responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1
-			  }
-			},
-			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 2,
-				slidesToScroll: 1
-			  }
-			}
-			]
-		});
-	}
-	logo_slider();
-
-	/*-----------------------------------------
-	  10.10 Testimonial Slider Slick ----------
-	  -----------------------------------------*/
-	function testimonial_slider(){
-		$('.quotes-slider').slick({
-			dots: false,
-			infinite: true,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			arrows: true,
-		});
-	}
-	testimonial_slider();
-	  
-	/*-----------------------------------
-	  11. Tabs With Accordian Responsive
-	-------------------------------------*/
-	$(".tab_content").hide();
-	$(".tab_content:first").show();
-	
-	/* if in tab mode */
-	$("ul.tabs li").on('click', function () {
-		$(".tab_content").hide();
-		var activeTab = $(this).attr("rel"); 
-		$("#"+activeTab).fadeIn();		
-		
-		$("ul.tabs li").removeClass("active");
-		$(this).addClass("active");
-		
-		$(".tab_drawer_heading").removeClass("d_active");
-		$(".tab_drawer_heading[rel^='"+activeTab+"']").addClass("d_active");
-		
-		$('.productSlider').slick('refresh');
-	
-	});
-	/* if in drawer mode */
-	$(".tab_drawer_heading").on('click', function () {
-		
-		$(".tab_content").hide();
-		var d_activeTab = $(this).attr("rel"); 
-		$("#"+d_activeTab).fadeIn();
-		
-		$(".tab_drawer_heading").removeClass("d_active");
-		$(this).addClass("d_active");
-		
-		$("ul.tabs li").removeClass("active");
-		$("ul.tabs li[rel^='"+d_activeTab+"']").addClass("active");
-		
-		$('.productSlider').slick('refresh');
-	});
-	
-	$('ul.tabs li').last().addClass("tab_last");
-	
-	/*-----------------------------------
-	  End Tabs With Accordian Responsive
-	-------------------------------------*/
-	
-	/*-----------------------------------
-	  12. Sidebar Categories Level links
-	-------------------------------------*/
-	function categories_level(){
-		$(".sidebar_categories .sub-level a").on("click", function() {
-			$(this).toggleClass('active');
-			$(this).next(".sublinks").slideToggle("slow");
-		}); 
-	}
-	categories_level();
-	
-	$(".filter-widget .widget-title").on("click", function () {
-		$(this).next().slideToggle('300');
-		$(this).toggleClass("active");
-	});
-	
-	/*-----------------------------------
-	 13. Price Range Slider
-	-------------------------------------*/
-	function price_slider(){
-		$("#slider-range").slider({
-			range: true,
-			min: 12,
-			max: 200,
-			values: [0, 100],
-			slide: function(event, ui) {
-				$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-			}
-		});
-		$("#amount").val("$" + $("#slider-range").slider("values", 0) +
-		" - $" + $("#slider-range").slider("values", 1));
-	}
-	price_slider();
-	
-	/*-----------------------------------
-	 14. Color Swacthes
-	-------------------------------------*/
-	function color_swacthes(){
-		$.each($(".swacth-list"), function() {
-			var n = $(".swacth-btn");
-			n.on("click", function() {
-				$(this).parent().find(n).removeClass("checked");
-				$(this).addClass("checked")
-			})
-		});
-	}
-	color_swacthes();
-	
-	/*-----------------------------------
-	  15. Footer links for mobiles
-	-------------------------------------*/
-	function footer_dropdown(){
-		$(".footer-links .h4").on('click', function () {
-			if($(window).width() < 766){
-			  $(this).next().slideToggle();
-			  $(this).toggleClass("active");
-			}
-		});  
-	}
-	footer_dropdown();
-	
-	//Resize Function 
-	var resizeTimer;
-	$(window).resize(function (e) {
-		clearTimeout(resizeTimer);
-		resizeTimer = setTimeout(function () {
-			$(window).trigger('delayed-resize', e);
-		}, 250);
-	});
-	$(window).on("load resize",function(e){
-		if ($(window).width() > 766 ) {
-			$(".footer-links ul").show();
-		}
-		else {
-			$(".footer-links ul").hide();
-		}
-	});
-	
-	
-	/*-------------------------------
-	  16. Site Animation
-	----------------------------------*/
-	  if($(window).width() < 771) {
-		  $('.wow').removeClass('wow');
-	  }
-	  var wow = new WOW(
-	  {
-		boxClass:     'wow',      // animated element css class (default is wow)
-		animateClass: 'animated', // animation css class (default is animated)
-		offset:       0,          // distance to the element when triggering the animation (default is 0)
-		mobile:       false,       // trigger animations on mobile devices (default is true)
-		live:         true,       // act on asynchronously loaded content (default is true)
-		callback:     function(box) {
-		  // the callback is fired every time an animation is started
-		  // the argument that is passed in is the DOM node being animated
-		},
-		scrollContainer: null // optional scroll container selector, otherwise use window
-	  }
-	);
-	wow.init();
-	
-  	/*-------------------------------
-	  17. SHOW HIDE PRODUCT TAG
-	----------------------------------*/
-	$(".product-tags li").eq(10).nextAll().hide(); 
-	$('.btnview').on('click', function () {
-	$(".product-tags li").not('.filter--active').show();
-	 $(this).hide();
-	});
-	
-  	/*-------------------------------
-	  18. SHOW HIDE PRODUCT Filters
-	----------------------------------*/
-    $('.btn-filter').on("click", function() {
-       $(".filterbar").toggleClass("active");
-    });
-    $('.closeFilter').on("click", function() {
-      $(".filterbar").removeClass("active");
-    });
-  	// Hide Cart on document click
-    $("body").on('click', function (event) {
-      var $target = $(event.target);
-      if(!$target.parents().is(".filterbar") && !$target.is(".btn-filter")){
-        $(".filterbar").removeClass("active");
+            // Append the new div to the featuredProductContainer
+            featuredProductContainer.appendChild(featuredDiv);
+          }
+        }
       }
     });
-	
-	/*-------------------------------
-	 19. Timer Count Down
-	----------------------------------*/
-	$('[data-countdown]').each(function () {
-		var $this = $(this),
-			finalDate = $(this).data('countdown');
-		$this.countdown(finalDate, function (event) {
-			$this.html(event.strftime('<span class="ht-count days"><span class="count-inner"><span class="time-count">%-D</span> <span>Days</span></span></span> <span class="ht-count hour"><span class="count-inner"><span class="time-count">%-H</span> <span>HR</span></span></span> <span class="ht-count minutes"><span class="count-inner"><span class="time-count">%M</span> <span>Min</span></span></span> <span class="ht-count second"><span class="count-inner"><span class="time-count">%S</span> <span>Sc</span></span></span>'));
-		});
-	});
-	
-	/*-------------------------------
-	 20.Scroll Top ------------------
-	---------------------------------*/
-	function scroll_top(){
-		$("#site-scroll").on("click", function() {
-			$("html, body").animate({ scrollTop: 0 }, 1000);
-				return false;
-		}); 
-	}
-	scroll_top();
-	
-	$(window).scroll(function(){    
-		if($(this).scrollTop()>300){
-		  $("#site-scroll").fadeIn();
-		} else {
-		   $("#site-scroll").fadeOut();
-		}
-	});
-	
-	/*-------------------------------
-	  21. Height Product Grid Image
-	----------------------------------*/
-	function productGridView() {
-	  var gridRows = []; 
-	  var tempRow = [];
-	  productGridElements = $('.grid-products .item');
-	  productGridElements.each(function (index) {
-		if ($(this).css('clear') != 'none' && index != 0) {
-		  gridRows.push(tempRow);
-		  tempRow = []; 
-		}
-		tempRow.push(this);
-	
-		if (productGridElements.length == index + 1) {
-		  gridRows.push(tempRow);
-		}
-	  });
-	
-	  $.each(gridRows, function () {
-		var tallestHeight = 0;
-		var tallestHeight1 = 0;
-		$.each(this, function () {
-		  $(this).find('.product-image > a').css('height', '');
-		  elHeight = parseInt($(this).find('.product-image').css('height'));
-		  if (elHeight > tallestHeight) { tallestHeight = elHeight; }
-		});
-	
-		$.each(this, function () {
-		  if($(window).width() > 768) {
-			$(this).find('.product-image > a').css('height', tallestHeight);
-		  }
-		});
-	  });
-	}
-	
-	/*----------------------------
-       22. Product details slider 2
-    ------------------------------ */
-	function product_thumb(){
-		$('.product-dec-slider-2').slick({
-			infinite: true,
-			slidesToShow: 5,
-			vertical: true,
-			slidesToScroll: 1,
-			centerPadding: '60px'
-		});
-	}
-	product_thumb();
-	
-	/*----------------------------
-       23. Product details slider 1
-    ------------------------------ */
-	function product_thumb1(){
-		$('.product-dec-slider-1').slick({
-			infinite: true,
-			slidesToShow: 6,
-			stageMargin: 5,
-			slidesToScroll: 1
-		});
-	}
-	product_thumb1();
-	
-	/*--------------------------
-      24. Product Zoom
-	---------------------------- */
-	function product_zoom(){
-		$(".zoompro").elevateZoom({
-			gallery: "gallery",
-			galleryActiveClass: "active",
-			zoomWindowWidth: 300,
-			zoomWindowHeight: 100,
-			scrollZoom: false,
-			zoomType: "inner",
-			cursor: "crosshair"
-		});
-	}
-	product_zoom();
-	
-	/*--------------------------
-      25. Product Page Popup ---
-	---------------------------- */
-    function video_popup(){
-		if($('.popup-video').length){
-			$('.popup-video').magnificPopup({
-				type: 'iframe',
-				mainClass: 'mfp-fade',
-				removalDelay: 160,
-				preloader: false,
-				fixedContentPos: false
-			});
-		}
-	}
-	video_popup();
-	
-	function size_popup(){
-		$('.sizelink').magnificPopup({
-			type:'inline',
-			midClick: true
-		});
-	}
-	size_popup();
-	
-	function inquiry_popup(){
-		$('.emaillink').magnificPopup({
-			type:'inline',
-			midClick: true
-		});
-	}
-	inquiry_popup();
-	
-	/*----------------------------------
-	  26. Quantity Plus Minus
-	------------------------------------*/
-	function qnt_incre(){
-		$(".qtyBtn").on("click", function() {
-		  var qtyField = $(this).parent(".qtyField"),
-			 oldValue = $(qtyField).find(".qty").val(),
-			  newVal = 1;
-	
-		  if ($(this).is(".plus")) {
-			newVal = parseInt(oldValue) + 1;
-		  } else if (oldValue > 1) {
-			newVal = parseInt(oldValue) - 1;
-		  }
-		  $(qtyField).find(".qty").val(newVal);
-		});
-	}
-	qnt_incre();
-	
-	/*----------------------------------
-	  27. Visitor Fake Message
-	------------------------------------*/
-    var userLimit = $(".userViewMsg").attr('data-user'),
-        userTime = $(".userViewMsg").attr('data-time');
-    $(".uersView").text(Math.floor((Math.random() * userLimit)));
-    setInterval(function(){
-    	$(".uersView").text(Math.floor((Math.random() * userLimit)));
-	}, userTime);
+});
 
-	/*----------------------------------
-	  28. Product Tabs
-	------------------------------------*/
-	$(".tab-content").hide();
-	$(".tab-content:first").show();
-	/* if in tab mode */
-	$(".product-tabs li").on('click', function () {
-		$(".tab-content").hide();
-		var activeTab = $(this).attr("rel"); 
-		$("#"+activeTab).fadeIn();		
-		
-		$(".product-tabs li").removeClass("active");
-		$(this).addClass("active");
-		
-		$(this).fadeIn();
-      	if($(window).width()<767) {
-          var tabposition = $(this).offset();
-          $("html, body").animate({ scrollTop: tabposition.top }, 700);
+// Fetch and display latest premium products
+document.addEventListener("DOMContentLoaded", function () {
+  // Fetch JSON data from file
+  fetch("/assets/json/data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const latestProductContainer = document.getElementById("latest-grid");
+
+      for (const key in data) {
+        const user = data[key][0];
+        const products = Object.values(user.product); // Convert the object to an array
+
+        // Iterate through products for this user
+        for (const product of products) {
+          // Check if the product is premium
+          if (product[0].premium === true) {
+            // Create a new div element for displaying the latest premium product
+            const latestDiv = document.createElement("div");
+            latestDiv.classList.add("feature-card");
+
+            latestDiv.innerHTML = `
+              <div class="featured-image">
+                <span class="discount-tag">50% off</span>
+                <img loading="lazy"
+                  src="${product[0].image}"
+                  alt="latest image"
+                  class="feature-thumb"
+                />
+                <button class="card-btn" id="card-btn">
+                  Add to wishlist <i class="fa-solid fa-cart-plus"></i>
+                </button>
+              </div>
+              <div class="feature-info">
+                <h3 class="feature-name">${product[0].name}</h3>
+                <h5 class="feature-brand">${product[0].brand}</h5>
+                <div class="feature-prices">
+                  <span class="feature-price">
+                    ${product[0].currency}${product[0].newPrice}.00
+                  </span>
+                </div>
+              </div>
+            `;
+
+            // Append the new div to the latestProductContainer
+            latestProductContainer.appendChild(latestDiv);
+          }
         }
-	});
-    
-    $('.product-tabs li:first-child').addClass("active");
-	$('.tab-container h3:first-child + .tab-content').show();
-	
-	/* if in drawer mode */
-	$(".acor-ttl").on("click", function() {
-		$(".tab-content").hide();
-		var activeTab = $(this).attr("rel"); 
-		$("#"+activeTab).fadeIn();
-		
-		$(".acor-ttl").removeClass("active");
-		$(this).addClass("active");
-	});
-
-    
-    $(".reviewLink").on('click', function(e){
-      e.preventDefault();
-        $(".product-tabs li").removeClass("active");
-      	$(".reviewtab").addClass("active");
-        var tab = $(this).attr("href");
-        $(".tab-content").not(tab).css("display", "none");
-        $(tab).fadeIn();
-      	var tabposition = $("#tab2").offset();
-      	if($(window).width()<767) {
-          $("html, body").animate({ scrollTop: tabposition.top-50 }, 700);
-        } else{
-          $("html, body").animate({ scrollTop: tabposition.top-80 }, 700);
-        }
+      }
     });
-	
-	/*--------------------------------------
-	  29. Promotion / Notification Cookie Bar 
-	  -------------------------------------- */
-	  function cookie_promo(){
-		  if(Cookies.get('promotion') != 'true') {   
-			 $(".notification-bar").show();         
-		  }
-		  $(".close-announcement").on('click',function() {
-			$(".notification-bar").slideUp();  
-			Cookies.set('promotion', 'true', { expires: 1});  
-			return false;
-		  });
-	  }
-	  cookie_promo();
-	 /* --------------------------------------
-	 	End Promotion / Notification Cookie Bar 
-	 -------------------------------------- */
-	 
-	 /* --------------------------------------
-	 	30. Image to background js
-	 -------------------------------------- */
-    $(".bg-top" ).parent().addClass('b-top');
-    $(".bg-bottom" ).parent().addClass('b-bottom');
-    $(".bg-center" ).parent().addClass('b-center');
-    $(".bg-left" ).parent().addClass('b-left');
-    $(".bg-right" ).parent().addClass('b-right');
-    $(".bg_size_content").parent().addClass('b_size_content');
-    $(".bg-img").parent().addClass('bg-size');
-    $(".bg-img.blur-up" ).parent().addClass('');
-    jQuery('.bg-img').each(function() {
+});
 
-        var el = $(this),
-            src = el.attr('src'),
-            parent = el.parent();
+// fashion banner
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll(".fashion-slide");
+  let currentIndex = 0;
 
-        parent.css({
-            'background-image': 'url(' + src + ')',
-            'background-size': 'cover',
-            'background-position': 'center',
-            'background-repeat': 'no-repeat'
-        });
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        setTimeout(() => {
+          slide.classList.add("show");
+        }, 1000);
+        slide.style.display = "flex";
+      } else {
+        setTimeout(() => {
+          slide.style.display = "none";
+        }, 1000);
 
-        el.hide();
+        slide.classList.remove("show");
+      }
     });
-	/* --------------------------------------
-	 	End Image to background js
-	 -------------------------------------- */
-	
-	/*----------------------------------
-	32. Related Product Slider ---------
-	------------------------------------*/
-	function related_slider(){
-		$('.related-product .productSlider').slick({
-		  dots: false,
-		  infinite: true,
-		  item: 5,
-		  slidesToScroll: 1,
-		  responsive: [
-			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToScroll: 1,
-			  }
-			},        
-			{
-			  breakpoint: 767,
-			  settings: {
-				slidesToScroll: 1,
-			  }
-			}
-		  ]
-		});
-	}
-	related_slider();
-	/*----------------------------------
-	  End Related Product Slider
-	  ------------------------------------*/
-	
-	/*-----------------------------------
-	  33. Infinite Scroll js
-	  -------------------------------------*/
-	function load_more(){
-        $(".product-load-more .item").slice(0, 16).show();
-        $(".loadMore").on('click', function (e) {
-            e.preventDefault();
-            $(".product-load-more .item:hidden").slice(0, 4).slideDown();
-            if ($(".product-load-more .item:hidden").length == 0) {
-                $(".infinitpagin").html('<div class="btn loadMore">no more products</div>');
-            }
-        });
-    }
-	load_more();
-	
-	function load_more_post(){
-        $(".blog--grid-load-more .article").slice(0, 3).show();
-        $(".loadMorepost").on('click', function (e) {
-            e.preventDefault();
-            $(".blog--grid-load-more .article:hidden").slice(0, 1).slideDown();
-            if ($(".blog--grid-load-more .article:hidden").length == 0) {
-                $(".loadmore-post").html('<div class="btn loadMorepost">No more Blog Post</div>');
-            }
-        });
-    }
-	load_more_post();
-	/*-----------------------------------
-	  End Infinite Scroll js
-	  -------------------------------------*/
-	
+  }
 
-})(jQuery);
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+    setTimeout(nextSlide, 8000); // 8 seconds delay before next slide
+  }
+
+  // Initial setup
+  showSlide(currentIndex);
+  setTimeout(nextSlide, 8000); // Start the slideshow
+});

@@ -1,0 +1,38 @@
+/* variables */
+:root{
+    --black: rgba(0, 0, 0, 1);
+    --faint-black: rgba(0, 0, 0, .5);
+    --white: rgba(255, 255, 255, 1);
+    --faint-white: rgba(255, 255, 255, .5);
+    --dark-blue: rgba(0, 0, 128, 1);
+    --faint-dark-blue: rgba(0, 0, 128, 0.5);
+    --royal-blue: rgba(65, 105, 225, 1);
+    --faint-royal-blue: rgba(65, 105, 225, .5);
+    --light-blue: rgba(173, 216, 230, 1);
+    --faint-light-blue: rgba(173, 216, 230, .5);
+    --gold: rgba(255, 215, 0, 1);
+    --faint-gold: rgba(255, 215, 0, .5);
+    --ghost-gold: rgba(255, 215, 0, .2);
+    --silver: rgba(192, 192, 192, 1);
+    --faint-silver: rgba(192, 192, 192, .5);
+    --ghost-silver: rgba(192, 192, 192, .2);
+    --hash-silver: #D3D3D3;
+    --hash-black: #333333;
+    --gray: rgba(128, 128, 128, 1);
+    --faint-gray: rgba(128, 128, 128, .5);
+  
+    /* typography */
+    --heading: 24px;
+    --sub-heading: 18px;
+    --font-px: 16px;
+    -roboto: 'Roboto', san-serif;
+  
+    /* spacing */
+    --x-px: 20px;
+    --m-px: 10px;
+    --s-px: 5px;
+    --xs-px: 2px;
+  
+    --box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  /* variables */
